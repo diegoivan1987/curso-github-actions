@@ -1,10 +1,10 @@
 name: hola-mundo
 on: [push]
 jobs:
-  hola-mundo:
-  runs-on: ubuntu-latest
-  steps:
-    -name: checkout de prueba
-     uses: actions/checkout@v3
-    -name: imprimir
-     run: python main.py
+  hola-mundo-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Correr script
+        run: python main.py
