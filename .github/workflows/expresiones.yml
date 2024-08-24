@@ -1,0 +1,38 @@
+name: expresiones
+run-name: workflow de expresiones
+on:
+  workflow_dispatch:
+    inputs:
+      precio1:
+        type: string
+        required: true
+      precio2:
+        type: string
+        required: true
+      total:
+        type: string
+        required: true
+      ingresado:
+        type: string
+        required: true
+jobs:
+  suma:
+    runs-on: ubuntu-latest
+    if: ${{ fromJson(inputs.precio1) + fromJson(inputs.precio2) == fromJson(inputs.total) }}
+    steps:
+      - name: calcular total
+        run: echo "Total es igual a ${{ inputs.total }}"
+
+  resta:
+    runs-on: ubuntu-latest
+    if: ${{ fromJson(inputs.total) > fromJson(inputs.ingresado) }}
+    steps:
+      - name: calcular resto
+        run: echo "El valor es insuficiente"
+
+  vuelto:
+    runs-on: ubuntu-latest
+    if: ${{ fromJson(inputs.total) < fromJson(inputs.ingresado) }}
+    steps:
+      - name: calcular vuelto
+        run: echo "El vuelto es ${{ fromJson(inputs.ingresado) - fromJson(inputs.total) }}"
