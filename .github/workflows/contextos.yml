@@ -1,0 +1,23 @@
+name: contextos
+run-name: workflow de contextos
+on: [push]
+jobs:
+  primer_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir rama
+        run: echo "Estas en la rama ${{ github.ref }}"
+  
+  segundo_job:
+    runs-on: ubuntu-latest
+    env:
+      variable1: "soy una variable"
+    steps:
+      - name: imprimir variable
+        run: echo $variable1
+  
+  tercer_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: imprimir id del job
+        run: echo "Estas en el job ${{ github.job }}"
