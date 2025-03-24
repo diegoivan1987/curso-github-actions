@@ -1,0 +1,14 @@
+name: variables
+run-name: workflow de variables
+on: [push]
+env:
+  var_workflow: hola
+jobs:
+  asignna_nombre:
+    runs-on: ubuntu-latest
+    env:
+      var_job: pepe
+    steps:
+      - env:
+          var_step: soy una variable
+        run: echo $var_workflow $var_job $var_step
